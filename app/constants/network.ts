@@ -1,7 +1,8 @@
 import { NetworkType, toHex } from '@metamask/controller-utils';
 import { KnownCaipNamespace, toCaipChainId } from '@metamask/utils';
 
-export const INFURA_PROJECT_ID = process.env.MM_INFURA_PROJECT_ID;
+export const INFURA_PROJECT_ID: string | undefined =
+  process.env.MM_INFURA_PROJECT_ID;
 
 export const MAINNET = 'mainnet';
 export const HOMESTEAD = 'homestead';
@@ -23,10 +24,7 @@ export const PRIVATENETWORK = 'PRIVATENETWORK';
 export const DEFAULT_MAINNET_CUSTOM_NAME = 'Ethereum Main Custom';
 export const IPFS_DEFAULT_GATEWAY_URL = 'https://dweb.link/ipfs/';
 
-/**
- * @enum {string}
- */
-export const NETWORKS_CHAIN_ID = {
+export const NETWORKS_CHAIN_ID: Record<string, string> = {
   MAINNET: toHex('1'),
   OPTIMISM: toHex('10'),
   OPTIMISM_SEPOLIA: toHex('11155420'),
@@ -62,15 +60,14 @@ export const NETWORKS_CHAIN_ID = {
   PLASMA: toHex('9745'),
 };
 
-// To add a deprecation warning to a network, add it to the array
-export const DEPRECATED_NETWORKS = [
+export const DEPRECATED_NETWORKS: string[] = [
   NETWORKS_CHAIN_ID.GOERLI,
   NETWORKS_CHAIN_ID.ARBITRUM_GOERLI,
   NETWORKS_CHAIN_ID.OPTIMISM_GOERLI,
   NETWORKS_CHAIN_ID.LINEA_GOERLI,
   NETWORKS_CHAIN_ID.MUMBAI,
 ];
-export const CHAINLIST_CURRENCY_SYMBOLS_MAP = {
+export const CHAINLIST_CURRENCY_SYMBOLS_MAP: Record<string, string> = {
   MAINNET: 'ETH',
   OPTIMISM: 'ETH',
   BNB: 'BNB',
@@ -96,7 +93,7 @@ export const CHAINLIST_CURRENCY_SYMBOLS_MAP = {
   PLASMA: 'XPL',
 };
 
-export const CURRENCY_SYMBOL_BY_CHAIN_ID = {
+export const CURRENCY_SYMBOL_BY_CHAIN_ID: Record<string, string> = {
   [NETWORKS_CHAIN_ID.MAINNET]: CHAINLIST_CURRENCY_SYMBOLS_MAP.MAINNET,
   [NETWORKS_CHAIN_ID.OPTIMISM]: CHAINLIST_CURRENCY_SYMBOLS_MAP.OPTIMISM,
   [NETWORKS_CHAIN_ID.BSC]: CHAINLIST_CURRENCY_SYMBOLS_MAP.BNB,
@@ -126,7 +123,7 @@ export const CURRENCY_SYMBOL_BY_CHAIN_ID = {
   [NETWORKS_CHAIN_ID.PLASMA]: CHAINLIST_CURRENCY_SYMBOLS_MAP.PLASMA,
 };
 
-export const TEST_NETWORK_IDS = [
+export const TEST_NETWORK_IDS: string[] = [
   NETWORKS_CHAIN_ID.GOERLI,
   NETWORKS_CHAIN_ID.SEPOLIA,
   NETWORKS_CHAIN_ID.LINEA_GOERLI,
@@ -135,6 +132,6 @@ export const TEST_NETWORK_IDS = [
   NETWORKS_CHAIN_ID.MONAD_TESTNET,
 ];
 
-export const TESTNET_CAIP_IDS = TEST_NETWORK_IDS.map((id) =>
+export const TESTNET_CAIP_IDS: string[] = TEST_NETWORK_IDS.map((id) =>
   toCaipChainId(KnownCaipNamespace.Eip155, parseInt(id, 16).toString()),
 );

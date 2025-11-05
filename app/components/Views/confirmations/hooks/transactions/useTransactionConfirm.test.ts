@@ -154,7 +154,7 @@ describe('useTransactionConfirm', () => {
     });
 
     resetTransactionMock.mockReturnValue({
-      type: 'reset',
+      type: 'RESET_TRANSACTION',
     });
 
     isRemoveGlobalNetworkSelectorEnabledMock.mockReturnValue(false);
